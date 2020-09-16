@@ -4,3 +4,5 @@
 
 module AnomalousDNS;
 redef domain_whitelist = /\.(in-addr\.arpa|ip6\.arpa|ls\.apple\.com|itunes\.apple\.com|push\.apple\.com)$|^(d-[0-9]{20}\.ampproject\.net|itunes\.apple\.com|time-ios\.apple\.com|configuration\.apple\.com|pancake\.apple\.com|xp\.apple\.com|ocsp\.apple\.com|mesu\.apple\.com|apple\.com)$/;
+redef local_dns_servers = set();
+redef totally_ignored_ips = set();

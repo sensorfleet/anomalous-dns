@@ -47,6 +47,11 @@ export {
 	## and query type 10 (if Trust Anchor Telemetry).
 	const local_dns_servers: set[addr] &redef;
 
+	## IP addresses that are ignored from all DNS anomaly checks
+	## Matches both source and destination address.
+	## Useful for very noisy hosts, e.g. DNS servers handling lots of customer domains.
+	const totally_ignored_ips: set[addr] &redef;
+
 	## Recursive resolvers receive the same treatment as local dns servers, but are tracked seperately
 	## in an-dns-domain.zeek. This allows for a higher query limit than forwarding resolvers, 
 	## and / or additional whitelisting.

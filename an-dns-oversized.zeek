@@ -56,6 +56,11 @@ event dns_request(c: connection, msg: dns_msg, query: string, qtype: count, qcla
 
 event dns_message(c: connection, is_orig: bool, msg: dns_msg, len: count)
 	{
+	if (c$id$orig_h in totally_ignored_ips || c$id$resp_h in totally_ignored_ips) {
+		# Ignore DNS request totally. Useful if you run a DNS server that handles a million of domains.
+		# No need to whitelist everything individually.
+		return;
+	}
 	local o_resp = oversize_response;
 	local local_server = F;
 	if (c$id$orig_h in local_dns_servers || c$id$orig_h in recursive_resolvers)

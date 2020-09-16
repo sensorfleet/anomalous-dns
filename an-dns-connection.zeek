@@ -21,6 +21,11 @@ export {
 
 event dns_message(c: connection, is_orig: bool, msg: dns_msg, len: count)
 	{
+	if (c$id$orig_h in totally_ignored_ips || c$id$resp_h in totally_ignored_ips) {
+		# Ignore DNS request totally. Useful if you run a DNS server that handles a million of domains.
+		# No need to whitelist everything individually.
+		return;
+	}
 	if (c$duration > conn_duration_limit)
 		{
 		event AnomalousDNS::conn_duration_exceeded(c);
