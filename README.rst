@@ -11,9 +11,12 @@ domain-tld: https://github.com/sethhall/domain-tld
 Installation
 ____________
 
-``zkg install jbaggs/anomalous-dns``
+``zkg install sensorfleet/anomalous-dns``
 
 Documentation
 _____________
 
 Current documentation consists of inline comments.
+
+This version has the following changes over jbaggs version:
+ - support for more aggressive whitelisting: you can whitelist IPs to fully disable all DNS anomaly tracking.
